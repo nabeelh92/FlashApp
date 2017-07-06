@@ -37,7 +37,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         
         //TODO: Set the tapGesture here:
-        
+        let tapGesture = UITapGestureRecognizer(target: self,
+                                                action: #selector(tableViewTapped))
+        messageTableView.addGestureRecognizer(tapGesture)
         
 
         //TODO: Register your MessageCell.xib file here:
@@ -70,7 +72,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     //TODO: Declare tableViewTapped here:
-    
+    func tableViewTapped() {
+        messageTextfield.endEditing(true)
+    }
     
     
     //TODO: Declare configureTableView here:
@@ -89,17 +93,23 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //TODO: Declare textFieldDidBeginEditing here:
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        heightConstraint.constant = 308
         
         //if something in veiw has changed, redraw whole thing
-        view.layoutIfNeeded()
+        
+        UIView.animate(withDuration: 0.50){
+            self.heightConstraint.constant = 308
+            self.view.layoutIfNeeded()
+        }
     }
     
     
     
     //TODO: Declare textFieldDidEndEditing here:
     func textFieldDidEndEditing(_ textField: UITextField) {
-
+        UIView.animate(withDuration: 0.50){
+            self.heightConstraint.constant = 50
+            self.view.layoutIfNeeded()
+        }
     }
 
     
