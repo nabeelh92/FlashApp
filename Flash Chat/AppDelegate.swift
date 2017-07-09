@@ -21,10 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         
         
-        let myDataBase = FIRDatabase.database().reference()
-        myDataBase.setValue("We've got data!")
-        
-        
         return true
     }
 
